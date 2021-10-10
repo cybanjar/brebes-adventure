@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 import Tabs from '../views/Tabs.vue'
-import Splash from '../views/Splash.vue'
+// import Splash from '../views/Splash.vue'
+// import Login from '../views/Login.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -33,7 +34,18 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/splash',
     name: 'Splash',
-    component: Splash
+    // component: Splash
+    component: () => import('@/views/Splash.vue')
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    // component: Login
+    component: () => import('@/views/Login.vue')
+  },
+  {
+    path: '/:catchAll(.*)',
+    component: () => import('@/views/Error404.vue')
   }
 ]
 

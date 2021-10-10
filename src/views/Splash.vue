@@ -1,109 +1,71 @@
 <template>
   <ion-page>
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Leasing Match</ion-title>
-        <ion-buttons slot="end">
-          <ion-button>
-            <ion-icon :icon="menu"></ion-icon>
-          </ion-button>
-          <ion-button>
-            <ion-icon :icon="grid"></ion-icon>
-          </ion-button>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Tab 1</ion-title>
-        </ion-toolbar>
-      </ion-header>
-    
-      <CardListing :data="cards" />
-
-    </ion-content>
+    <ion-grid class="ion-no-padding">
+      <ion-row class="ion-justify-content-center ion-align-items-center h-100">
+        <ion-col class="ion-text-center">
+          <ion-img class="img" :src="logo"></ion-img>
+          <ion-text color="primary">
+            <h1>
+              Brebes <span class="text-light">Adventure</span>
+              <ion-text color="secondary">.</ion-text>
+            </h1>
+          </ion-text>
+          <ion-text color="primary text-light"
+            >Location object platform
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-page>
 </template>
 
-<script lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButtons, IonButton } from '@ionic/vue';
-import CardListing from "../components/CardListing";
-import { grid, menu } from 'ionicons/icons';
+<script>
+import router from "@/router";
+import { IonGrid, IonRow, IonCol, IonText, IonImg, IonPage } from "@ionic/vue";
+import { defineComponent, reactive, toRefs, onMounted } from "vue";
 
-export default  {
-  name: 'Splash',
-  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonIcon, IonButtons, IonButton, CardListing },
+export default defineComponent({
+  name: "Splash",
+  components: { IonGrid, IonRow, IonCol, IonText, IonImg, IonPage },
   setup() {
+    const state = reactive({
+      logo: "https://i.imgur.com/Tm95oZX.png",
+    });
+
+    onMounted(() => {
+      setTimeout(() => {
+        router.replace({ path: "login" });
+      }, 2000);
+    // console.log(router);
+    });
     return {
-      grid,
-      menu
-    }
-  },
-  data() {
-    return {
-      cards: [
-        {
-          new: "59.990",
-          rate: "481",
-          term: "36",
-          company: "Volvo",
-          model: "XC 40",
-          image: "https://www.dailymaverick.co.za/wp-content/uploads/19-213087_new_volvo_xc40_exterior-498114-e1527721345669-1600x841.jpg"
-        },
-        {
-          new: "54.980",
-          rate: "342",
-          term: "36",
-          company: "Mercedes",
-          model: "C-Class",
-          image: "https://cdn.motor1.com/images/mgl/3xR11/s3/2019-mercedes-benz-c-class-sedan.jpg"
-        },
-        {
-          new: "43.986",
-          rate: "366",
-          term: "36",
-          company: "Lexus",
-          model: "LS",
-          image: "https://images.hgmsites.net/hug/lexus-ls_100751064_h.jpg"
-        },
-      ],
-      subscriptions: [
-        {
-          name: "Themna Makwa",
-          icon: "person",
-          cost: "19.30",
-          date: "12 Aug 2020, 03:23 am",
-        },
-        {
-          name: "Tami Muthambi",
-          icon: "person",
-          cost: "6.09",
-          date: "10 Aug 2020, 13:40 pm",
-        },
-        {
-          name: "Gary Goat",
-          icon: "person",
-          cost: "19.30",
-          date: "12 Aug 2020, 03:23 am",
-        },
-        {
-          name: "Jackie Chan",
-          icon: "person",
-          cost: "6.09",
-          date: "10 Aug 2020, 13:40 pm",
-        },
-      ],
+      ...toRefs(state),
     };
-  }
-}
+  },
+});
 </script>
 
 <style lang="scss" scoped>
-ion-header {
-  padding: 8px;
-  margin-bottom: 10px;
-  border-bottom: none;
-  border-radius: 8px;
+.red {
+  background-color: red;
+}
+
+.img {
+  height: 48px;
+  width: 48px;
+  margin: auto;
+}
+
+.h-100 {
+  height: 100vh;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.text-light {
+  font-weight: 300;
 }
 </style>
