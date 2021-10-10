@@ -1,11 +1,12 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 import Tabs from '../views/Tabs.vue'
+import Splash from '../views/Splash.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/tabs/tab1'
+    redirect: '/splash'
   },
   {
     path: '/tabs/',
@@ -28,6 +29,11 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/Tab3.vue')
       }
     ]
+  },
+  {
+    path: '/splash',
+    name: 'Splash',
+    component: Splash
   }
 ]
 
