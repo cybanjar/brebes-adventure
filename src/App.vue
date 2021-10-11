@@ -18,4 +18,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+ion-app {
+  background-color: white;
+  padding: 0;
+  margin: 0;
+}
 </style>
