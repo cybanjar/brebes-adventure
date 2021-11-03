@@ -25,20 +25,20 @@
     </ion-row>
     <ion-row class="b-rt-md mt-min-md ion-item-justify-center bg-white h-md">
       <ion-col class="mx">
-        <div class="mt-lg" v-if="isLogin === false">
-          <ion-text class="mb">Name</ion-text>
-          <ion-input class="border" inputmode="email" type="email" placeholder="Input your name..." />
-        </div>
+        <ion-item class="mt-md" v-if="isLogin === false">
+          <ion-label position="stacked">Name *</ion-label>
+          <ion-input inputmode="text" type="text" clear-input></ion-input>
+        </ion-item>
 
-        <div class="mt-md">
-          <ion-text class="mb">Email</ion-text>
-          <ion-input class="border" inputmode="email" type="email" placeholder="Input your email..." />
-        </div>
+        <ion-item class="mt-md">
+          <ion-label position="stacked">Email *</ion-label>
+          <ion-input inputmode="email" type="email" clear-input></ion-input>
+        </ion-item>
 
-        <div class="mt-md">
-          <ion-text class="mb">Password</ion-text>
-          <ion-input class="border" inputmode="password" type="password" placeholder="Input your password..." />
-        </div>
+        <ion-item class="mt-md">
+          <ion-label position="stacked">Password *</ion-label>
+          <ion-input inputmode="password" type="password" clear-input></ion-input>
+        </ion-item>
 
         <div class="mt-md">
           <ion-text class="cursor-pointer" @click="swithReset" color="primary">Forgot password?</ion-text>
@@ -58,12 +58,12 @@
 
 <script>
 // import router from "@/router";
-import { IonRow, IonCol, IonText, IonPage, IonImg, IonInput, IonButton } from "@ionic/vue";
+import { IonRow, IonCol, IonText, IonPage, IonImg, IonInput, IonButton, IonItem, IonLabel } from "@ionic/vue";
 import { defineComponent, reactive, toRefs } from "vue";
 
 export default defineComponent({
   name: "Login",
-  components: { IonRow, IonCol, IonText, IonPage, IonImg, IonInput, IonButton },
+  components: { IonRow, IonCol, IonText, IonPage, IonImg, IonInput, IonButton, IonItem, IonLabel },
   setup() {
     const state = reactive({
       logo: "https://i.imgur.com/5FM7LmK.png",
